@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Gemfile
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rake
+      - run: zip -rqj emoji.alfredsnippets emoji/*
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: emoji.alfredsnippets
