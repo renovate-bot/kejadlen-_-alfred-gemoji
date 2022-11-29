@@ -20,7 +20,7 @@ jobs:
         with:
           bundler-cache: true
       - run: bundle exec rake
-      - run: zip -rqj emoji.alfredsnippets emoji/*
+      - run: zip -rqj emoji.alfredsnippets build/*
       - uses: ncipollo/release-action@v1
         with:
           artifacts: emoji.alfredsnippets
