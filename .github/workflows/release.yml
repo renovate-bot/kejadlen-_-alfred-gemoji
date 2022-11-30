@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - Gemfile
+      - Gemfile.lock
   workflow_dispatch:
 
 jobs:
